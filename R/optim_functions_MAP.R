@@ -74,7 +74,7 @@ optimize.psi<-function(phi,
 	  			prior.num = prior.num)
 	}
 	
-	sfInit(parallel = TRUE, cpus = opt.control$n.cores, type = "SOCK" )
+	snowfall::sfInit(parallel = TRUE, cpus = opt.control$n.cores, type = "SOCK" )
 	opt.control$n.cores <- NULL
 	sfExport("phi", "Z_gt", "Z_t", "prior.num", "opt.control")
 
