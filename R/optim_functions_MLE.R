@@ -60,7 +60,7 @@ optimize.psi.oneGamma <- function(phi,
 	#obtain a single MLE estimators for gamma
 	
 	if(optimizer=="Rcgmin")
-		opt.res <- Rcgminu(par= rep(0,ncol(phi)),
+		opt.res <- BayesPrism:::Rcgminu(par= rep(0,ncol(phi)),
 	  				   fn= log.mle.gamma,
 	  				   gr= log.mle.gamma.grad,
 	  				   control= opt.control, 

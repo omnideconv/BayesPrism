@@ -63,7 +63,7 @@ optimize.psi<-function(phi,
 				  			
 	cpu.fun <- function(t) {
 		require(BayesPrism)
-		Rcgminu(par= rep(0,ncol(phi)),
+	  BayesPrism:::Rcgminu(par= rep(0,ncol(phi)),
 	  			fn= log.posterior.gamma,
 	  			gr= log.posterior.gamma.grad,
 	  			control= opt.control, 
