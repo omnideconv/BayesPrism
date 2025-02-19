@@ -62,10 +62,10 @@ optimize.psi<-function(phi,
 	Z_t <- colSums(Z_gt)
 				  			
 	cpu.fun <- function(t) {
-		require(BayesPrism)
-	  BayesPrism:::Rcgminu(par= rep(0,ncol(phi)),
-	  			fn= log.posterior.gamma,
-	  			gr= log.posterior.gamma.grad,
+		library(BayesPrism)
+	  BayesPrism::Rcgminu(par= rep(0,ncol(phi)),
+	  			fn= BayesPrism::log.posterior.gamma,
+	  			gr= BayesPrism::log.posterior.gamma.grad,
 	  			control= opt.control, 
 	  			phi_t = phi[t,],
 	  			phi_t.log = log(phi[t,]),
@@ -93,7 +93,7 @@ optimize.psi<-function(phi,
 	#set to 0 if extremes > 20 (biologically unlikely value), i.e. use MLE instead	
 	opt.gamma[apply(abs(opt.gamma),1,max) > 20,] <- 0
 	
-	psi <- transform.phi(phi, opt.gamma)
+	psi <- BayesPrism::transform.phi(phi, opt.gamma)
 	dimnames(psi) <- phi.dimnames
 	
 	return(list(psi = psi, value = value))				   	
